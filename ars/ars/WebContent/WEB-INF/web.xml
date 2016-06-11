@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <servlet>
+    <servlet-name>login</servlet-name>
+    <servlet-class>com.ars.controller.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>login</servlet-name>
+    <url-pattern>/loginServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>enquiry</servlet-name>
+    <servlet-class>com.ars.controller.EnquiryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>enquiry</servlet-name>
+    <url-pattern>/enquiryServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>offers</servlet-name>
+    <servlet-class>com.ars.controller.OffersServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>offers</servlet-name>
+    <url-pattern>/offersServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>passengers</servlet-name>
+    <servlet-class>com.ars.controller.PassengersServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>passengers</servlet-name>
+    <url-pattern>/PassengersServlet</url-pattern>
+  </servlet-mapping>
+
+    <servlet>
+    <servlet-name>payment</servlet-name>
+    <servlet-class>com.ars.controller.PaymentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>payment</servlet-name>
+    <url-pattern>/paymentServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  <servlet>
+    <servlet-name>profile</servlet-name>
+    <servlet-class>com.ars.controller.ProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>profile</servlet-name>
+    <url-pattern>/profileServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>services</servlet-name>
+    <servlet-class>com.ars.controller.ServicesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>services</servlet-name>
+    <url-pattern>/servicesServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>apartments</servlet-name>
+    <servlet-class>com.ars.controller.ViewApartmentsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>apartments</servlet-name>
+    <url-pattern>/viewApartmentsServlet</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
