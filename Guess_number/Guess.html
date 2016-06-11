@@ -1,0 +1,50 @@
+<html>
+<head>
+</head>
+<body bgcolor="silver">
+  <form align="center">
+  <svg height="100" width="100">
+  <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" id="cir" fill="white"/>
+</svg><br><br>
+
+<label>Guess the number</label>
+<input type="text" name="num" id="num1">
+<button type="submit" onClick="return myFunction()" >Check</button>
+<p id="demo"></p>
+<h4>Number of tries</h4><span id="tries"></span>
+<h4>Total number of tries are 10</h4>
+</form>
+<script type="text/javascript">
+var c=0;
+function myFunction(){
+
+var x = Math.floor((Math.random() * 100) + 1);
+
+var y = document.getElementById("num1").value;
+
+ if(x==y){
+  document.getElementById("cir").style.fill = "green";
+document.getElementById("tries").innerHTML = ++c;
+ }
+else if(y>x){
+ document.getElementById("cir").style.fill = "red";
+document.getElementById("tries").innerHTML = ++c;
+}
+else if(y<x){
+ document.getElementById("cir").style.fill = "yellow";
+document.getElementById("tries").innerHTML = ++c;
+}
+
+if(c==10){
+document.getElementById("demo").innerHTML = "Game Over";
+ document.getElementById("cir").style.fill = "black";
+}
+
+return false;
+}
+
+
+</script>
+
+</body>
+</html>
