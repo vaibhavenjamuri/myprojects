@@ -1,0 +1,95 @@
+<html>
+
+<link rel="stylesheet" type="text/css" href="theme.css">
+<font style="color:blue" size=15>Birds Slide Show</font><br>
+<font>Wild Birds</font>
+<div class="slider" id="main-slider"><!-- outermost container element -->
+	<div class="slider-wrapper"><!-- innermost wrapper element -->
+		<div class="slide" data-image="bird_1.jpg"></div><!-- slides -->
+		<div class="slide" data-image="bird_2.jpg"></div>
+		<div class="slide" data-image="bird_3.jpg"></div>
+		<div class="slide" data-image="bird_4.jpg"></div>
+		<div class="slide" data-image="bird_5.jpg"></div>
+		<div class="slide" data-image="bird_6.jpg"></div>
+		<div class="slide" data-image="bird_7.jpg"></div>
+			<div class="slide" data-image="bird_8.jpg"></div>
+				<div class="slide" data-image="bird_9.jpg"></div>
+					<div class="slide" data-image="bird_10.jpg"></div>
+	</div>
+</div>
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script>
+(function( $ ) {
+	$.fn.slideshow = function( options ) {
+		options = $.extend({
+			slides: ".slide",
+			speed: 3000,
+			easing: "linear"
+
+		}, options);
+
+		var timer = null;
+		var index = 0;
+
+		var slideTo = function( slide, element ) {
+			var $currentSlide = $( options.slides, element ).eq( slide );
+
+			$currentSlide.stop( true, true ).
+			animate({
+				opacity: 1
+			}, options.speed, options.easing ).
+			siblings( options.slides ).
+			css( "opacity", 0 );
+
+		};
+
+		var autoSlide = function( element ) {
+			timer = setInterval(function() {
+				index++;
+				if( index == $( options.slides, element ).length ) {
+					index = 0;
+				}
+				slideTo( index, element );
+			}, options.speed);
+		};
+
+		var startStop = function( element ) {
+			element.hover(function() {
+				clearInterval( timer );
+				timer = null;
+			}, function() {
+				autoSlide( element );
+			});
+		};
+
+		return this.each(function() {
+			var $element = $( this ),
+				$previous = $( options.previous, $element ),
+				$next = $( options.next, $element ),
+				index = 0,
+				total = $( options.slides ).length;
+
+				$( options.slides, $element ).each(function() {
+					var $slide = $( this );
+					var image = $slide.data( "image" );
+					$slide.css( "backgroundImage", "url(" + image + ")" );
+				});
+
+				autoSlide( $element );
+				startStop( $element );
+
+		});
+	};
+
+	$(function() {
+		$( "#main-slider" ).slideshow();
+
+	});
+
+})( jQuery );
+
+
+</script>
+
+</html>

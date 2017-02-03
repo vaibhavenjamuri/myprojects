@@ -1,0 +1,32 @@
+<html>
+
+<link rel="stylesheet" type="text/css" href="drop.css">
+<nav>
+<a class="dropdown-toggle" href="#" title="Menu">Menu</a>
+<ul class="dropdown">
+  <li><a href="#">Menu Item</a></li>
+  <li><a href="#">Menu</a></li>
+  <li><a href="#">Settings</a></li>
+  <li><a href="#">Search</a></li>
+</ul>
+</nav>
+<script type="text/javascript" src="C:\Users\Vaibhav\Desktop\jquery\jquery-1.11.3.min.js"></script>
+
+<script>
+$(function() {
+
+// Dropdown toggle
+$('.dropdown-toggle').click(function(){
+  $(this).next('.dropdown').toggle();
+});
+
+$(document).click(function(e) {
+  var target = e.target;
+  if (!$(target).is('.dropdown-toggle') && !$(target).parents().is('.dropdown-toggle')) {
+    $('.dropdown').hide();
+  }
+});
+
+});
+</script>
+</html>

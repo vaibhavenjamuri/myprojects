@@ -1,0 +1,71 @@
+<html>
+<link rel="stylesheet" type="text/css" href="slider.css">
+&nbsp &nbsp<h3>View Our Birds</h3>
+<div id="slider">
+  <a href="#" class="control_next">>></a>
+  <a href="#" class="control_prev"><</a>
+  <ul>
+    <li><img src="bird_1.jpg" style="float:left" height="300" width="160"><img src="bird_2.jpg" height="300" width="160"><img src="bird_3.jpg" style="float:left" height="300" width="180"></li>
+    <li ><img src="bird_4.jpg" height="300" width="160"><img src="bird_5.jpg" style="float:left" height="300" width="160"><img src="bird_6.jpg" height="300" width="180"></li>
+
+    <li><img src="bird_7.jpg" style="float:left" height="300" width="160"><img src="bird_8.jpg" height="300" width="160"><img src="bird_9.jpg" style="float:left" height="300" width="180"></li>
+
+
+  </ul>
+</div>
+
+
+
+
+<script src="jquery-1.11.3.min.js"></script>
+<script src="jssor.slider.mini.js"></script>
+<script>
+jQuery(document).ready(function ($) {
+
+$('#checkbox').change(function(){
+setInterval(function () {
+    moveRight();
+}, 3000);
+});
+
+var slideCount = $('#slider ul li').length;
+var slideWidth = $('#slider ul li').width();
+var slideHeight = $('#slider ul li').height();
+var sliderUlWidth = slideCount * slideWidth;
+
+$('#slider').css({ width: slideWidth, height: slideHeight });
+
+$('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
+
+$('#slider ul li:last-child').prependTo('#slider ul');
+
+function moveLeft() {
+    $('#slider ul').animate({
+        left: + slideWidth
+    }, 200, function () {
+        $('#slider ul li:last-child').prependTo('#slider ul');
+        $('#slider ul').css('left', '');
+    });
+};
+
+function moveRight() {
+    $('#slider ul').animate({
+        left: - slideWidth
+    }, 200, function () {
+        $('#slider ul li:first-child').appendTo('#slider ul');
+        $('#slider ul').css('left', '');
+    });
+};
+
+$('a.control_prev').click(function () {
+    moveLeft();
+});
+
+$('a.control_next').click(function () {
+    moveRight();
+});
+
+});
+
+</script>
+</html>
