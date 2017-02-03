@@ -1,0 +1,55 @@
+.header{
+  background-color:green;
+
+padding: 10px;
+}
+div.menu{
+  float: left;
+      width: 200px;
+      height:1685px;
+     background-image: url("lorem.jpg");
+
+   }
+.main{
+background-color:lightgreen;
+
+}
+ul.a{
+  list-style-position: inside;
+}
+div.menu a {
+
+    color: white;
+    text-decoration: none;
+   background-color: orange;
+}
+table{
+
+}
+.link{
+
+}
+.img-circle {
+    border-radius: 150px;
+    width: 300px;
+	height: 300px;
+	border-radius: 100px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+}
+h5 a{
+  color:violet;
+  text-decoration: none;
+     background-color: lightgreen;
+}
+.footer{
+background-color: lightblue;
+}
+ ul li{
+display: inline;
+ list-style-type: none;
+}
+
+.v{ 
+border-right: 2px solid darkblue; 
+}
