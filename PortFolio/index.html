@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="ihover-gh-pages/src/ihover.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<!--<link rel="stylesheet" href="bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css">-->
+<script src="jquery/jquery-1.11.3.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--<script src="bootstrap-4.0.0-alpha.6-dist/js/bootstrap.min.js"></script>-->
+<script>
+$(document).ready(function(){
+//  $(".circle").hover(function(){
+  //$(".circle").text("hii");
+//});
+
+
+
+
+var movementStrength = 25;
+var height = movementStrength / $(window).height();
+var width = movementStrength / $(window).width();
+$(".parallax").mousemove(function(e){
+          var pageX = e.pageX - ($(window).width() / 2);
+          var pageY = e.pageY - ($(window).height() / 2);
+          var newvalueX = width * pageX * -1 - 25;
+          var newvalueY = height * pageY * -1 - 50;
+          $('.parallax').css("background-position", newvalueX+"px     "+newvalueY+"px");
+});
+  //Contact Link
+  $("#linkcontact").click(function(){
+  //$("html").animate({width:'100%',opacity: '0.4'}, "slow");
+//$("html").animate({height: '100%', opacity: '1.0'}, "slow");
+
+  //$("#div1").css('opacity', 0);
+$("#div1").animate({width: '100%', opacity: '0.4'}, "slow");
+//$("#div1").animate({width: '100%', opacity: '0.8'}, "9000").show();
+$("#div1").animate({height: '100%', opacity: '1.0'}, "slow").show();
+//$("#div1").slideDown();
+//$("#div1").show();
+
+ //$('#div1').animate({opacity: 0.8}, {height:'100%',width: '100%', duration: '8000'});
+ //$('#div1').animate({height: '300px', opacity: '0.8'}, "slow");
+  //$('#div1').animate({opacity: 1}, {height: '100%',queue: false, duration: '5000'});
+
+ //$("#div1").show();
+ //$("#div1").animate({bottom: '250px'});
+
+$("#divclose").show();
+$(".parallax").hide();
+$("nav").hide();
+$("#Intro").hide();
+$("#Projects").hide();
+$("#Contact").hide();
+$("#quotes").hide();
+
+});//Contact Link End
+
+   $("#divclose").click(function(){
+//Contact Form Close
+
+  $("#div1").slideUp("slow");
+     //$("html").animate({width:'100px', opacity: '0.4'},"slow");
+  // $("html").animate({height:'100%',width:'100%', opacity: '1.0'}, "slow");
+//$('html').animate({opacity: 0.6},"slow");
+  $("html").slideDown("slow");
+  //$('html').animate({opacity: 1},"slow");
+     $("nav").show();
+       $("#quotes").show();
+     $(".parallax").show();
+     $("#Intro").show();
+     $("#Projects").show();
+     $("#Contact").show();
+     $("#footer").show();
+      $("#divclose").hide();
+     $(".close").hide();
+      $("#project1").hide();
+        $("#project2").hide();
+     $("#contact2").hide();
+
+});//Contact Form Close End
+
+$(".close").click(function(){
+  //Projects Close
+  $("#Intro").slideDown("slow");
+  //$("html").animate({height:'100%',width:'100%', opacity: '1.0'}, "slow");
+  $("nav").show();
+  $(".parallax").show();
+  $("#Intro").show();
+    $("#quotes").show();
+  $("#Projects").show();
+  $("#Contact").show();
+  $("#footer").show();
+  $(".close").hide();
+      $("#divclose").hide();
+  $("#project1").hide();
+  $("#project2").hide();
+  $("#contact2").hide();
+  $("#div1").hide();
+});//Projects Close End
+
+$("#Apartment").click(function(){
+//APT Slides Link
+  $("#project1").animate({width: '100%', opacity: '0.8'}, "slow");
+  $("#project1").animate({height:'100%',opacity: '1.0'}, "slow");
+
+     $("#project1").show();
+$(".parallax").hide();
+  $(".close").show();
+   $("#arrow").show();
+       $("nav").hide();
+  $("#Intro").hide();
+  $("#Projects").hide();
+  $("#Contact").hide();
+  $("#quotes").hide();
+  $("#footer").hide();
+});//APT Slides Link Close
+
+$("#Planet").click(function(){
+//PTS Slide Link
+ $("#project2").animate({width: '100%', opacity: '0.8'}, "slow");
+ $("#project2").animate({height:'100%', opacity: '1.0'}, "slow");
+
+     $("#project2").show();
+$(".parallax").hide();
+  $(".close").show();
+  $("#footer").hide();
+  $("nav").hide();
+  $("#Intro").hide();
+  $("#Projects").hide();
+  $("#Contact").hide();
+  $("#quotes").hide();
+});//PTS Slides Close
+
+
+});
+
+</script>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<!--Menu Bar-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container-fluid">
+  <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+      </div>
+  <div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#Intro">HOME</a></li>
+        <li><a href="#Projects">PROJECTS</a></li>
+        <li><a href="#Contact">CONTACT</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span class="caret"></span></a>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</nav><!--Menu Close-->
+
+  <div id="project1"   style="font-family:'Lobster',cursive;font-size:24px;color:white;display:none;position:absolute;">
+<!--ARS Slides-->
+
+<div id="projectss"  style="opacity:0.6;background-color:#f2f2f2;width:500px;height:500px;">
+<center><font size="60" style="opacity:1;color:black;">Project #1:</font>
+  <h1 style="opacity:1;color:black;">Apartment Rental System</h1></center>
+</div>
+<br><br><br>
+<div class="row">
+  <div class="col-md-6" >
+  <div id="myCarousel"  style="opacity:1" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators" style="padding-bottom:26px;">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+  </ol>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner"  role="listbox" >
+    <div class="item active" style="height:650px">
+      <img id="img1" height="650px" width="750px" class="img-responsive" src="images/Apartment/SearchApartments.png" alt="Chania">
+    </div>
+    <div class="item">
+      <img id="img2" class="img-responsive" src="images/Apartment/AddApartments.png" alt="Chania">
+    </div>
+    <div class="item">
+      <img id="img3" class="img-responsive" src="images/Apartment/SearchApartments.png" alt="Flower">
+    </div>
+  </div>
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+
+
+</div>
+</div>
+
+<div class="col-md-6">
+
+  <p  style="padding-top:30px;color:#00004d;line-height:200%;">Apartment Rental System is a web application which is used for the users to accompany with the desired apartments which operates under server. It maintains the customers periodic activities like paying rent, bills, accessing maintenance services, moved date, lease end date in the database for future references.
+</p>
+</div>
+</div>
+</div>
+
+
+
+  <div id="project2"  style="font-family:'Lobster',cursive;font-size:24px;color:white;display:none;position:absolute;">
+<!--PTS Slides-->
+<div id="projectss"  style="opacity:0.6;background-color:black;width:500px;height:500px;">
+  <center><font size="60" style="opacity:1;color:white;">Project #2:</font>
+    <h1 style="opacity:1;color:white;">Planet Tree System</h1></center>
+</div>
+<br><br><br>
+<div class="row">
+  <div class="col-md-6" >
+  <div id="myCarousel"  style="opacity:1" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators" style="padding-bottom:26px;">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+  </ol>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner"  role="listbox" >
+    <div class="item active" style="height:650px">
+      <img id="img1" height="650px" width="750px" class="img-responsive" src="images/PlanetTree/Planettree_Home.png" alt="Chania">
+    </div>
+    <div class="item">
+      <img id="img2" class="img-responsive" src="images/PlanetTree/ScheduleEvent.png" alt="Chania">
+    </div>
+    <div class="item">
+      <img id="img3" class="img-responsive" src="images/PlanetTree/Registration_form.png" alt="Flower">
+    </div>
+  </div>
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+
+
+</div>
+</div>
+
+<div class="col-md-6">
+
+  <p  style="padding-top:30px;color:#00004d;line-height:200%;">
+    PlanetTree is a non-profit organization which promotes the planting of trees throughout the region.
+    Currently serving Missouri, the organization looks forward to nationwide expansion. PlanetTree
+    works with municipal governments, state agencies and, in some cases, private land owners to place
+    trees.
+  </p>
+  <p style="color:#00004d;line-height:200%;">All trees are funded through donations and are planted by volunteers. The administrator
+  compares contributed tree funds with requests to determine monthly planting events.</p>
+</div>
+</div>
+</div>
+<!--<div id="nextp" style="font-family:'Lobster',cursive;">
+  <h1 style="color:black;">NEXT PROJECT</h1>
+  <h1 style="color:black;">Apartment Rental System</h1>
+
+</div><!--PTS Slides Close-->
+
+<div id="div1" style="display:none" >
+
+<div class="row" id="contact1">
+  <div class="col-sm-5">
+<img id="img9" src="images/wood.jpg" height="900" ></img>
+  </div>
+
+    <div class="col-sm-6" style="height:900px;font-family:'Lobster',cursive;color:white;background-color:black">
+<br><br>
+<center><h3 style="line-height:200%;">I'm currently available for hire so if you're interested in starting a project together or would just like to say hi, the best way to do so is via email:</h3>
+</center>
+<center><h1>enjamuri.ui@gmail.com</h1>
+</center>
+</div>
+
+
+<div class="col-sm-1" style="height:800px;font-family:'Lobster',cursive;color:white;background-color:Slate gray">
+<br>
+<div class="row"><!--circle-->
+  <section align="center" class="section_0">
+
+      <div class="circle circle1" align="center">
+        <!--<a href="#section_1"><font style="font-family:'Lucida Grande';color:#3b5998" size="10px">f</font></a>-->
+<a target="_blank" title="find us on Facebook" href="https://www.facebook.com/enjamuri.vaibhav"><img alt="facebook" src="images/facebook_256.png" height="45px" width="45px" border=0></a>
+</div>
+      <div class="circle circle2">
+    <!--   <a href="#section_2"><font style="font-family:'Lobster',cursive;color:#55ACEE"size="5px">twitter</font></a>-->
+<a target="_blank" title="follow me on twitter" href="http://www.twitter.com/PLACEHOLDER"><img alt="twitter" src="images/Twitter-256.png" height="45px" width="45px" border=0></a>-->
+    </div>
+      <div class="circle circle3">
+    <!-- <a href="#section_3"><fontstyle="font-family:'Helvetica Neue';color:#55ACEE" size="10px">t</font></a>-->
+<a target="_blank" title="Email me" href="https://mail.google.com/mail/?view=cm&fs=1&to=enjamuri.ui@gmail.com"><img alt="Gmail" src="images/Google-256.png" height="45px" width="45px" border=0></a>
+    </div>
+    <div class="circle circle3">
+  <!-- <a href="#section_3"><fontstyle="font-family:'Helvetica Neue';color:#55ACEE" size="10px">t</font></a>-->
+  <a target="_blank" title="Connect me" href="https://www.linkedin.com/in/vaibhavui"><img alt="LinkedIn" src="images/in.png" height="45px" width="45px" border=0></a>
+  </div>
+  <div class="circle circle3">
+<!-- <a href="#section_3"><fontstyle="font-family:'Helvetica Neue';color:#55ACEE" size="10px">t</font></a>-->
+<a target="_blank" title="Subscribe me" href="https://www.youtube.com/dashboard?o=U"><img alt="Youtube" src="images/Youtube-256.png" height="45px" width="45px" border=0></a>
+</div>
+  </section>
+</div><!--circle-->
+</div>
+</div>
+</div>
+
+<!--Contact Form Close-->
+<div class="parallax"><!--Parallax-->
+        <div id="Intro" ><!--Intro Section-->
+          <center><h1>Hello I am<h1/></center>
+                    <center id="name">ENJAMURI</center>
+                      <center><p><h1>I <b>create</b> User Interfaces, <b>develop</b> Web Applications.<span class="blinking-cursor">|</span>
+                      </p><h1/></center>
+        </div><!--Intro Section Close-->
+</div><!--Parallax Close-->
+
+    <div id="Projects"><!--Projects Section-->
+      <center>MY PROJECTS</center>
+
+
+  <div class="row">
+      <div class="col-md-6">
+
+    <div class="hovereffect">
+        <img class="img-responsive" src="images/Apartment.jpg" alt="">
+        <div class="overlay">
+           <h2>Apartment Rental System</h2>
+           <a id="Apartment" class="info" href="#">Show slides</a>
+
+    </div>
+</div>
+     </div>
+          <div class="col-md-6">
+
+                <div class="hovereffect">
+                    <img class="img-responsive" src="images/Tree.jpg" alt="">
+                    <div class="overlay">
+                       <h2>Planet Tree System</h2>
+                       <a id="Planet" class="info" href="#">Show Slides</a>
+</div>
+                </div>
+            </div>
+          </div>
+
+        </div><!--Projects Section Close-->
+
+<div id="Contact"><!--Contacts Section-->
+
+  <center><h1>Like to work with me? </h1>
+  <a class="info" id="linkcontact" href="#Contact">CONTACT ME</a></center>
+</div><!--Contacts Section Close-->
+<div id="quotes">
+<div id="developerimg" style="height:500px" >
+  <div class="row">
+    <div class="col-sm-6" id="developer"  style="font-family:'Lobster',cursive;height:500px" >
+
+
+<h1 style="color:red;">DEVELOPER</h1>
+<p style="font-size:30px;color:white;">"Any fool can write code that a computer can understand. Good programmers write code that humans can understand."<font size="3"> Martin Fowler</font></p>
+<p align="center" style="font-size:20px;color:white;">A brand is only as successfulas its implementation; great products should not be defined by design alone, but also by functionality and great user experience.</p>
+
+<p align="center" style="font-size:20px;color:white;">However, that's just the tip of the iceberg. Code shouldn't only work, it should be easy to understand, easy to change and fun to work with. Developers need to strive for clean, elegant and efficient code to assure long-term sustainability and keep software's maintainability ―which goes beyond fixing bugs as it includes the need to adapt to a continuously changing environment.</p>
+</div>
+</div>
+</div>
+
+<div id="designerimg" style="height:500px">
+  <div class="row">
+      <div class="col-sm-6">
+
+      </div>
+<div class="col-sm-6" id="designer"  style="font-family:'Lobster',cursive;height:500px">
+
+      <h1 align="right" style="color:red;">DESIGNER</h1>
+      <p align="center" style="font-size:30px;color:black;">"Good design is obvious. Great design is transparent."</p>
+<div align="right">
+      <font style="color:black;" font-size="3"> -Joe Sparano</font>
+      <p align="center"style="font-size:20px;color:black;">I'm a multi-disciplinary designer who is always learning and seeking to improve. Multi-disciplinary allows me to plan like an engineer, create like an artist and think like a customer. My creative curiosity of staying up-to-date allows me to adapt
+        to a rapidly evolving industry without being left behind.</p>
+
+<p  align="center" style="font-size:20px;color:black;">Design really isn't just how it looks; the key to tackle a challenging problem through effective design thinking is to balance between the visual details and the usefulness it provides to the end user.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div align="center" id="footer"  style="font-size:20px;font-family:'Lobster',cursive;">
+  <span >&copy; Enjamuri</span>
+</div>
+</footer>
+
+
+
+<a href="#" id="divclose" style="display:none">
+<a href="#" class="close" style="display:none">
+
+
+  </body>
+  </html>

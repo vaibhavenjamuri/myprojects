@@ -1,0 +1,463 @@
+.blinking-cursor {
+  font-weight: 100;
+  font-size: 30px;
+  color: #2E3D48;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: white;
+  }
+}
+
+@-moz-keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: white;
+  }
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: white;
+  }
+}
+
+@-ms-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: white;
+  }
+}
+
+@-o-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: white;
+  }
+}
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 700px;
+      margin: auto;
+  }
+#img1:hover,#img2:hover,#img3:hover{
+  box-shadow: 0px 0px 150px #000000;
+   z-index: 2;
+   -webkit-transition: all 200ms ease-in;
+   -webkit-transform: scale(6.5);
+   -ms-transition: all 200ms ease-in;
+   -ms-transform: scale(7.5);
+   -moz-transition: all 200ms ease-in;
+   -moz-transform: scale(6.5);
+   transition: all 200ms ease-in;
+  transform: scale(1.5);
+}
+body, html {
+  padding:0 0px 0 0px;
+    height:100%;
+
+}
+#myNavbar{
+font-family: 'Lobster', cursive;
+font-size: 30px;
+}
+.backgroundcolor{
+  background-color: lightred;
+}
+    ul li{
+     display:inline;
+   }
+   .parallax {
+    /* The image used */
+    background-image:  url('../images/random4.jpg') ;
+    /* Full height */
+    height: 100%;
+    width:100%;
+     vertical-align: top;
+    opacity: 1;
+    /* Create the parallax scrolling effect */
+   background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*position:fixed ;
+top:0;
+width:100%;
+z-index:0;
+  height:100%;*/
+  background-size: calc(100% + 50px);
+}
+
+
+#Intro{
+font-family: 'Lobster', cursive;
+
+color:white;
+padding: 200px;
+}
+#name{
+  font-size: 70px;
+}
+#Projects{
+  font-family: 'Lobster', cursive;
+font-size: 40px;
+  color:black;
+  padding:100px
+}
+#Contact{
+  font-family: 'Lobster', cursive;
+  font-size: 30px;
+    padding:150px;
+
+    background-color: #00061a;
+    color: white;
+}
+
+
+.hovereffect {
+width:100%;
+height:100%;
+float:left;
+overflow:hidden;
+position:relative;
+text-align:center;
+cursor:default;
+}
+
+.hovereffect .overlay {
+width:100%;
+height:100%;
+position:absolute;
+overflow:hidden;
+top:0;
+left:0;
+opacity:0;
+background-color:rgba(0,0,0,0.5);
+-webkit-transition:all .4s ease-in-out;
+transition:all .4s ease-in-out
+}
+
+.hovereffect img {
+  width:1000px;
+  height:350px;
+display:block;
+position:relative;
+-webkit-transition:all .4s linear;
+transition:all .4s linear;
+}
+
+.hovereffect h2 {
+text-transform:uppercase;
+color:#fff;
+text-align:center;
+position:relative;
+font-size:17px;
+background:rgba(0,0,0,0.6);
+-webkit-transform:translatey(-100px);
+-ms-transform:translatey(-100px);
+transform:translatey(-100px);
+-webkit-transition:all .2s ease-in-out;
+transition:all .2s ease-in-out;
+padding:10px;
+}
+
+.hovereffect a.info{
+text-decoration:none;
+display:inline-block;
+text-transform:uppercase;
+color:#fff;
+border:1px solid #fff;
+background-color:transparent;
+opacity:0;
+filter:alpha(opacity=0);
+-webkit-transition:all .2s ease-in-out;
+transition:all .2s ease-in-out;
+margin:50px 0 0;
+padding:7px 14px;
+}
+#Contact a.info{
+  text-decoration:none;
+  display:inline-block;
+  text-transform:uppercase;
+  color:#fff;
+  border:1px solid #fff;
+  background-color:transparent;
+  -webkit-transition:all .2s ease-in-out;
+  transition:all .2s ease-in-out;
+  filter:alpha(opacity=0);
+  margin:50px 0 0;
+  padding:7px 14px;
+}
+
+.hovereffect a.info:hover {
+box-shadow:0 0 5px #fff;
+}
+a.info:hover {
+box-shadow:0 0 5px #fff;
+}
+
+.hovereffect:hover img {
+  box-shadow:0 0 5px #fff;
+-ms-transform:scale(1.2);
+-webkit-transform:scale(1.2);
+transform:scale(1.2);
+}
+
+.hovereffect:hover .overlay {
+opacity:1;
+filter:alpha(opacity=100);
+}
+
+.hovereffect:hover h2,.hovereffect:hover a.info{
+opacity:1;
+filter:alpha(opacity=100);
+-ms-transform:translatey(0);
+-webkit-transform:translatey(0);
+transform:translatey(0);
+}
+#Contact:hover a.info {
+  opacity:1;
+  filter:alpha(opacity=100);
+  -ms-transform:translatey(0);
+  -webkit-transform:translatey(0);
+  transform:translatey(0);
+  -webkit-transition-delay:.2s;
+  transition-delay:.2s;
+}
+
+.hovereffect:hover a.info {
+-webkit-transition-delay:.2s;
+transition-delay:.2s;
+}
+.close,#divclose {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 32px;
+  height: 32px;
+  opacity: 3;
+  color: black;
+}
+#arrow{
+  color:white;
+    bottom:10px;
+right: 32px;
+font-size: 25px;
+
+  opacity: 0.8;
+}
+.close:hover,#divclose:hover {
+  opacity: 3;
+}
+.close:before, .close:after,#divclose:before,#divclose:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: black;
+}
+.close:before,#divclose:before {
+  transform: rotate(45deg);
+}
+.close:after,#divclose:after {
+  transform: rotate(-45deg);
+}
+.circle {
+  margin: 36px;
+  display: inline-block;
+  padding: 16px;
+text-align: center;
+height:90px;
+width:90px;
+  border-radius: 50%;
+  border: 1px solid;
+  border-color: grey;
+}
+
+.circle::before,
+.circle::after {
+  position: absolute;
+  z-index: -1;
+  display: block;
+  content: '';
+}
+.circle,
+.circle::before,
+.circle::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.circle {
+  position: relative;
+  z-index: 2;
+  background-color: #fff;
+  border: 1px solid;
+
+  line-height: 50px;
+  overflow: hidden;
+}
+
+.circle:hover {
+  color: #fff;
+
+}
+.circle::after {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  -webkit-transform: scale(.5);
+  transform: scale(.5);
+}
+.circle:hover::after {
+  background: #9b9ba0;
+  border-radius: 50%;
+  -webkit-transform: scale(.9);
+  transform: scale(.9);
+}
+
+.circle1 {
+  opacity: 0.8;
+}
+
+.circle2 {
+  opacity: 0.8;
+}
+
+.circle3 {
+  opacity: 0.8;
+}
+
+.circle a {
+  text-decoration: none;
+  color: #1d2087;
+  font-size: 20px;
+
+}
+
+.circle h2 {
+  font-size: 20px;
+
+}
+
+.circle h2 small {
+  color: #1d2087;
+}
+#developerimg{
+
+  /* The image used */
+background-image: url('../images/night4.jpg');
+  /* Full height */
+  height: 100%;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#developer{
+  background-color: black;
+  opacity: 0.8;
+}
+#designerimg{
+
+  /* The image used */
+background-image: url('../images/night5.jpg');
+  /* Full height */
+  height: 100%;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#designer{
+  background-color:white;
+  opacity: 0.8;
+}
+#footer{
+  background-color: black;
+  height:80px;
+  padding-top: 30px;
+  color: white;
+}
+#project1{
+  background-image:  url('../images/blue1.jpg') ;
+  min-height: 500px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#project2{
+  background-image:  url('../images/PlanetTree/tree1.jpg') ;
+  min-height: 500px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#projectss{
+margin-top: 60px;
+margin-left: 50px;
+opacity: 1;
+
+}
+/*#project22{
+padding-top: 0px;
+margin-left: 400px;*/
+
+}
+#project23{
+  margin-top: 60px;
+  margin-left: 50px;
+
+}
+#nextp{
+
+margin-left: 600px;
+margin-top: 300px;
+margin-bottom: 400px;
+}
+#myCarousel{
+  padding-top: 60px;
+  height:520px;
+
+  opacity: 1;
+}
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+
+      margin: auto;
+  }
+  .carousel-inner{
+    height: 600px;
+  }
