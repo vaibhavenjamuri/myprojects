@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+      integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+      crossorigin=""
+    ></script>
+	<script data-require="jquery@*" data-semver="2.2.0" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	  
+	<script src="data/indianstates.geojson"></script>
+	<script src="data/indianstates3.geojson"></script>
+	<script src="data/indianstatesanddistricts2.geojson"></script>
+	<script src="data/indianstatesanddistricts3.geojson"></script>
+		
+    <style>
+      #checkinMap {
+	  height:500px;
+        width: 60%;
+        margin:  0px auto;
+      }
+	  
+	  .info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+
+.legend {
+    line-height: 18px;
+    color: #555;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
+    </style>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>The Weather Here</title>
+  </head>
+  <body>
+    <h1 style="text-align:center">COVID-19 Active Cases in India</h1>
+    
+    <div id="checkinMap"></div>
+    <script>
+	
+<!-- const mymap = L.map('checkinMap').setView([0, 0], 3); -->
+var mapboxAccessToken = 'pk.eyJ1IjoidmFpYmhhdnVpIiwiYSI6ImNrYTlpdzl5YjBuOTMydnF3ODMzczEzNzEifQ.puj4I6hoqtUye_-FoWzFpg';
+const mymap = L.map('checkinMap',{
+    center: [24.127,82.925],
+    zoom: 4
+    });
+const attribution =
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+//const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+const tileUrl =
+  'https://{s}.tile.openstreetmap.org{z}/{x}/{y}.png';
+ 
+
+
+		L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
+    id: 'mapbox/light-v9',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    tileSize: 512,
+    zoomOffset: -1
+}).addTo(mymap);
+var geojson;
+geojson = L.geoJson(indianstatesanddistricts3);
+			
+			function highlightFeature1(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+	info.update1(layer.feature.properties);
+}
+function resetHighlight1(e) {
+    geojson.resetStyle(e.target);
+	info.update();
+}
+function zoomToFeature1(e) {
+    mymap.fitBounds(e.target.getBounds());
+}
+function onEachFeature1(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature1,
+        mouseout: resetHighlight1,
+        click: zoomToFeature1
+    });
+}
+
+var aeds24hrs = L.geoJSON(indianstatesanddistricts3, {
+  
+    onEachFeature: onEachFeature1
+}).addTo(mymap); 
+var geojson1;
+geojson1 = L.geoJson(indianstates3);
+function polystyle(feature) {
+    return {
+        fillColor: 'none',
+        weight: 6,
+        opacity: 1,
+        color: 'orange',  //Outline color
+        fillOpacity: 0.7
+    };
+}
+function polystyle1(feature) {
+    return {
+        fillColor: 'none',
+        weight: 1,
+        opacity: 1,
+        color: 'blue',  //Outline color
+        fillOpacity: 0.7
+    };
+}
+
+function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+	info.update(layer.feature.properties);
+}
+function resetHighlight(e) {
+    geojson1.resetStyle(e.target);
+	info.update();
+}
+function zoomToFeature(e) {
+    mymap.fitBounds(e.target.getBounds());
+}
+function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+}
+var OneMapGrey =L.geoJson(indianstates3, {
+  
+    onEachFeature: onEachFeature
+}).addTo(mymap); 
+				
+			
+
+
+var baseMaps = {
+    "State View": OneMapGrey
+};    
+
+var overlayMaps = {
+    "District View": aeds24hrs
+};
+
+L.control.layers(baseMaps, overlayMaps).addTo(mymap)
+var info = L.control();
+
+info.onAdd = function (mymap) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+// method that we will use to update the control based on feature properties passed
+info.update1 = function (props) {
+    this._div.innerHTML = '<h4>State</h4>' +  (props ?
+        '<b>' + props.NAME_1 + '</b><br /><br /><h4>District</h4>' + props.NAME_2 + '<br /><br /><h4>Active Cases</h4>'+ props.Active_Cases +'<br/>'
+        : 'Hover over a state');
+};
+
+info.update = function (props) {
+    this._div.innerHTML = '<h4>State</h4>' +  (props ?
+        '<b>' + props.NAME_1 + '</b><br /><br /><h4>Active Cases</h4>'+ props.Active_Cases +'<br/>'
+        : 'Hover over a state');
+};
+
+info.addTo(mymap);
+
+
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function (mymap) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+        labels = [];
+
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+
+    return div;
+};
+
+legend.addTo(mymap);
+	</script>
+	 
+  </body>
+</html>
