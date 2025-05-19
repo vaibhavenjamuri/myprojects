@@ -1,0 +1,39 @@
+
+<form [formGroup]="publicationForm" (ngSubmit)="onSubmit()">
+
+
+  <table class="form">
+  <!-- <caption>Monthly savings</caption> -->
+    <tr *ngFor="let field of fieldNames">
+      <th>{{ field }}:</th>
+      <td>
+        <ng-container [ngSwitch]="field">
+          <select *ngSwitchCase="'Platform'" [formControlName]="field"  [ngStyle]="getInputStyle(field)"  [attr.required]="isFieldRequired(field) ? true : null">
+				<option value="">Select Platform</option>
+				<option value="Argo">Argo</option>
+				<option value="Drifting Buoy">Drifting Buoy</option>
+				<option value="Wave Rider Buoy">Wave Rider Buoy</option>
+				<option value="IRAWS">IRAWS</option>
+				<option value="Model / Remote Sensing">Model / Remote Sensing</option>
+				<option value="Moored Buoy">Moored Buoy</option>
+				<option value="Omni Buoy">OMNI Buoy</option>
+				<option value="Rama Buoy">RAMA Buoy</option>
+				<option value="Tide Guage">Tide Guage</option>
+          </select>
+<input
+  *ngSwitchDefault
+  [formControlName]="field"
+  [ngStyle]="getInputStyle(field)" [attr.required]="isFieldRequired(field) ? true : null"
+/>        </ng-container>
+      </td>
+ </tr>
+  </table>
+  <div class="submit-button-wrapper">
+  <button type="submit">Submit</button>
+</div>
+
+</form>
+
+<!-- <pre>{{ publicationForm.value | json }}</pre> -->
+
+

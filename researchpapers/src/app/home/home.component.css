@@ -1,0 +1,154 @@
+	.HEADING{
+		font-family: Georgia, 'Times New Roman', Times, serif;
+		text-align: center;
+		color: lightseagreen;
+		font-size: 25px;
+		margin-top: -110px;
+	}
+	.incois{
+		background-color: lightgrey;
+		padding: 10px;
+		margin-top: -10px;
+		margin-right: -10px;
+		margin-left: -10px;
+	} 
+	    table{
+		width: 95%;
+		border-collapse: collapse;
+		margin: 50px auto; 
+		background-color: #fff; 
+		border: 1px solid #ddd; 
+		box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2); 
+	}
+	td.wrap-content {
+		width: 350px; /* Set a fixed width for the second */
+		word-wrap: break-word; /* Allows content to wrap to the next line */
+		white-space: normal; /* Ensures text wraps within the cell */
+		overflow: hidden; /* Ensures no overflow of content */
+	}
+	td.wrap-content1 {
+		width: 250px; /* Set a fixed width for the second */
+		word-wrap: break-word; /* Allows content to wrap to the next line */
+		white-space: normal; /* Ensures text wraps within the cell */
+		overflow: hidden; /* Ensures no overflow of content */
+	}
+	th, td {
+		padding: 10px;
+		text-align: center;
+		border: 1px solid #ccc;
+	}
+	th {
+		top: 0;
+		position: sticky;
+		background-color: #007BFF;
+		color: #fff;
+	}
+	tr:nth-child(even) {
+		background-color: #f2f2f2;
+	}
+	tr:hover {
+		background-color: #ddd;
+	}
+	.options {
+		text-align: center;
+		margin-top: 20px;
+    }
+	.options select {
+		margin-right: 50px;
+    }
+	.options input[type="submit"],button {
+		background-color: #007BFF;
+		color: #fff;
+		border: none;
+		padding: 10px 20px;
+		cursor: pointer;
+		border-radius: 20px;
+    }
+	.table-container {
+		text-align: center;
+    }
+	select {
+		padding: 10px;
+		width: 200px;
+		border: 2px solid #51E2F5;
+		border-radius: 15px;
+	}
+	.form-input { 
+		padding: 10px;
+		width: 300px; 
+		border: 2px solid #51E2F5;
+		border-radius: 15px;
+		outline: none;
+		font-size: 16px;
+		margin-right: 100px;
+		margin-bottom: 10px; 
+	}
+	.options select {
+		margin-right: 20px;
+	}
+	th {
+		background-color: #007BFF;
+		color: #fff;
+		font-size: 18px; 
+		font-weight: bold;
+		font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;/* Change the font family */
+		padding: 15px;
+		text-align: center;
+		border-radius: 4px;
+		box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2); 
+	}
+	td {
+		font-size: 17px; 
+		font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		padding: 10px;
+		text-align: center;
+		box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2); 
+	}
+	tr:hover {
+		background-color: #ddd;
+	}
+	label {
+		font-size: 16px;
+		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+		color: #333; 
+	}
+	label[for="Year"] {
+		margin-right: 10px; 
+	}
+	label[for="Search"] {
+		margin-right: 10px; 
+	}
+	#dasb_button{
+		background-color: #007BFF;
+		color: #fff;
+		border: none;
+		padding: 10px 20px;
+		cursor: pointer;
+		border-radius: 20px;
+	}
+	@property --num {
+		syntax: '<integer>';
+		inherits: true;
+		initial-value: 0;
+	}
+
+	.count::before {
+		counter-reset: my-counter var(--num);
+		content: counter(my-counter);
+		animation: count 10s ease-in-out forwards; /* Remove infinite and add forwards */
+	}
+	@keyframes count {
+		to { --num:802}; 
+	}
+	/* everything below is for demo appearances and not important to the concept */
+	body {
+		box-sizing: border-box;
+		display: grid;
+		place-items: center;
+		min-height: 100vh;
+		margin: 0;
+		padding: 20px;
+		color: #556270;
+		background-image: linear-gradient(-45deg, #c5e0dc, #dcedc2);
+		font: 700 6rem/1 'Signika', sans-serif;
+	}

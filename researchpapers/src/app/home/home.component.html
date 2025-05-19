@@ -1,0 +1,169 @@
+<!-- Main Form -->
+<div class="options">
+
+  <form #usersForm="ngForm" (ngSubmit)="getUserFormData(usersForm.value)" id="yearForm">
+    <!-- Year and Platform Filters (Same as before) -->
+    <label for="Year">Year:</label>
+    <select [ngModel]="year" name="Year">
+      <option value="0">ALL</option>
+      <!-- <option *ngFor="let y of year" [value]="y">{{ y }}</option> -->
+	  				<option value="2025">2025</option>			  
+					<option value="2024">2024</option>
+					<option value="2023">2023</option>
+					<option value="2022">2022</option>
+					<option value="2021">2021</option>
+					<option value="2020">2020</option>
+					<option value="2019">2019</option>
+					<option value="2018">2018</option>
+					<option value="2017">2017</option>
+					<option value="2016">2016</option>
+					<option value="2015">2015</option>
+					<option value="2014">2014</option>
+					<option value="2013">2013</option>
+					<option value="2012">2012</option>
+					<option value="2011">2011</option>
+					<option value="2010">2010</option>
+					<option value="2009">2009</option>
+					<option value="2008">2008</option>
+					<option value="2007">2007</option>
+					<option value="2006">2006</option>
+					<option value="2005">2005</option>
+					<option value="2004">2004</option>
+					<option value="2003">2003</option>
+					<option value="2002">2002</option> 
+
+    </select>
+
+    <label for="Platform">Platform:</label>
+    <select [ngModel]="platform" name="platform">
+      <option value="1">ALL</option>
+      <!-- <option *ngFor="let p of platform" [value]="p">{{ p }}</option> -->
+	  					<option value="Drifting Buoy">Drifting Buoy</option>
+					<option value="Wave Rider Buoy">Wave Rider Buoy</option>
+					<option value="IRAWS">IRAWS</option>
+					<option value="Model / Remote Sensing">Model / Remote Sensing</option>
+					<option value="Moored Buoy">Moored Buoy</option>
+					<option value="Omni Buoy">OMNI Buoy</option>
+					<option value="Rama Buoy">RAMA Buoy</option>
+					<option value="Tide Guage">Tide Guage</option>
+
+    </select>
+
+    <input type="submit" value="Submit" />
+    <br />
+
+    <label for="Search">Search:</label>
+    <input type="text" ngModel name="Search" class="form-input" style="margin-right: -1200px;"/>
+
+    <div *ngFor="let item of total">
+      <label style="font-weight:200;font-size:25px">
+        Total No.of Publications that used INCOIS data:
+        <span class="count" style="font-size:30px;font-weight:600;color:blue">
+          {{ item.total }}
+        </span>
+      </label>
+    </div>
+
+    <!-- Publications Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Authors</th>
+          <th>Title</th>
+          <th>Year</th>
+          <th>Journal</th>
+          <th>Platform Used</th>
+          <th>DOI</th>
+          <th>Link</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of filteredUsers | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ user.Authors }}</td>
+          <td>{{ user.Title }}</td>
+          <td>{{ user.Year }}</td>
+          <td>{{ user.Source_Title }}</td>
+          <td>{{ user.platform }}</td>
+          <td>{{ user.DOI }}</td>
+          <td><a [href]="user.Link" target="_blank">Scopus link</a></td>
+          <td>
+            <button type="button" (click)="openEditModal(user)">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </form>
+</div>
+
+<!-- Edit Modal -->
+<div *ngIf="editingUser" class="modal">
+  <div class="modal-content">
+    <h3>Edit Publication</h3>
+    <form (ngSubmit)="updateUser()">
+	<table>
+	<tr><td><label>Authors:</label></td>
+	
+    <td><textarea  name="Authors" [(ngModel)]="editingUser.Authors" rows="3" cols="50"></textarea></td></tr>
+    <tr><td><label>Title:</label></td>
+    <td><textarea [(ngModel)]="editingUser.Title" name="Title" rows="3" cols="50"></textarea></td></tr>
+    <tr><td><label>Year:</label></td>
+      <td><input [(ngModel)]="editingUser.Year" name="Year" /></td></tr>
+      <tr><td><label>Journal:</label></td>
+      <td><input [(ngModel)]="editingUser.Source_Title" name="Source_Title" style="width: 100%"/></td></tr>
+      <tr><td><label>Platform:</label></td>
+      <td><select [(ngModel)]="editingUser.platform" name="platform">
+			  <option value="Drifting Buoy">Drifting Buoy</option>
+			  <option value="Wave Rider Buoy">Wave Rider Buoy</option>
+			  <option value="IRAWS">IRAWS</option>
+			  <option value="Model / Remote Sensing">Model / Remote Sensing</option>
+			  <option value="Moored Buoy">Moored Buoy</option>
+			  <option value="Omni Buoy">OMNI Buoy</option>
+			  <option value="Rama Buoy">RAMA Buoy</option>
+			  <option value="Tide Guage">Tide Guage</option>
+			</select></td></tr>
+      <tr><td><label>DOI:</label></td>
+     <td><input [(ngModel)]="editingUser.DOI" name="DOI" style="width: 100%"/></td></tr>
+      <tr><td><label>Link:</label></td>
+     <td><input [(ngModel)]="editingUser.Link" name="Link" style="width: 100%"/></td>
+	  </tr>
+	</table>
+      <br />
+      <button type="submit">Save</button>
+      <button type="button" (click)="closeEditModal()">Cancel</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal Styles -->
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* darker background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* ensure it's on top */
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 60%;
+  max-width: 600px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+.wide-input {
+  width: 300px;
+}
+
+</style>

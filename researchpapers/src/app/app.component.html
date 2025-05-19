@@ -1,0 +1,30 @@
+<style>
+  .HEADING{
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      text-align: center;
+      color: lightseagreen;
+      font-size: 25px;
+      margin-top: -110px;
+  }
+  .incois{
+      background-color: lightgrey;
+      padding: 10px;
+      margin-top: -10px;
+      margin-right: -10px;
+      margin-left: -10px;
+  }      
+</style>
+<div class="wrapper">
+	<div class="container">
+		<div class="tabs">
+			<input id="tab-1" type="radio" class="tab tab-selector" checked="checked" name="tab" />
+			<label for="tab-1" class="tab tab-primary"  routerLink="/home">PUBLICATIONS</label>
+			<input id="tab-2" type="radio" class="tab tab-selector" name="tab" />
+			<label for="tab-2" class="tab tab-success" routerLink="/chart">DASHBOARD</label>
+			<div class="tabsShadow"></div>
+			<div class="glider"></div>
+		</div>
+    </div>
+</div>
+<div>Last Updated on January 31, 2025 </div>
+ <router-outlet></router-outlet>

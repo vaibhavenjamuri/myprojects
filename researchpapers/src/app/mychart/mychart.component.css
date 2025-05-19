@@ -1,0 +1,16 @@
+select {
+	padding: 10px;
+	width: 200px;
+	border: 2px solid #51E2F5;
+	border-radius: 15px;
+	}
+.options select {
+	margin-right: 20px;
+	}
+ .ex {
+	width: 95%;
+	border-collapse: collapse;
+	margin: 50px auto; 
+	background-color: #fff; 
+	text-align: center;
+	}
