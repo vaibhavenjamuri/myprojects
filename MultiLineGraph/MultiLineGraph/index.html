@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Multi-Line Timeseries Graph with Database and Station ID Selection</title>
+		<!-- <script src="../JQuery/jquery-3.7.1.min.js"/> -->
+		<!-- <script src="../Highcharts/code/highcharts.js"/> -->
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+	</head>
+	<style>
+.box-container {
+    display: flex;
+    justify-content: center; /* Space between the boxes */
+    gap: 20px; /* Spacing between the boxes */
+    flex-wrap: wrap; /* Allows wrapping if screen size is smaller */
+	border: 1px solid #ddd;
+    padding: 15px;
+    background-color: #f9f9f9;
+		<!-- width: 22%; /* Adjust width as needed */ -->
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+table{
+ border-spacing: 10px;
+}
+#dates,#axis{
+border: 1px solid #ddd;
+background-color: #f9f9f9;
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.box-container2{
+  display: flex;
+  justify-content: center; /* Space between the boxes */
+}
+
+		<!-- .input-box { -->
+		<!-- border: 1px solid #ddd; -->
+		<!-- padding: 15px; -->
+		<!-- background-color: #f9f9f9; -->
+		<!-- width: 22%; /* Adjust width as needed */ -->
+		<!-- box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); -->
+		<!-- } -->
+		<!-- .input-box label, -->
+		<!-- .input-box select { -->
+		<!-- display: block; -->
+		<!-- margin: 8px 0; -->
+		<!-- } -->
+.form-group {
+    display: flex;
+    align-items: center; /* Aligns the label and select vertically */
+    gap: 10px; /* Adds space between label and dropdown */
+    margin-bottom: 10px; /* Adds spacing between rows */
+	 
+}
+
+label {
+    white-space: nowrap; /* Prevents wrapping of label text */
+    width: 120px; /* Optional: Adjust label width for alignment */
+	font-weight:600;
+}
+	</style>
+	<body>
+		<form id="chartForm">
+			<div class="box-container">
+				<!-- Box 1 -->
+				<div class="input-box" id="box1">
+					<table>
+						<tr>
+							<td></td>
+							<td>
+								<input type="checkbox" id="enableBox1" onchange="toggleFields('box1',1, this)"/>
+								<!-- <td> -->
+									<!-- <label for="enableBox1">Enable Box 1</label> -->
+								<!-- </td> -->
+							</tr>
+							<tr>
+								<td>
+									<label for="database1">Database:</label>
+								</td>
+								<td>
+									<select id="database1" name="database1" onchange="fetchTables(1)" disabled>
+									 <option value="0" selected="selected">Select database</option> 
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="table1">Table:</label>
+							</td>
+							<td>
+								<select id="table1" name="table1" onchange="fetchColumnsAndStationIds(1)" disabled></select></td>
+							</tr>
+							<tr>
+								<td>
+									<label for="stationId1">Station ID:</label>
+								</td>
+								<td>
+									<select id="stationId1" name="stationId1" onchange="fetchStationIds(1)" disabled>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="stationsel1">Station:</label>
+							</td>
+							<td>
+								<select id="stationsel1" name="stationsel1" disabled>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="xaxis1">Observation Time:</label>
+						</td>
+						<td>
+							<select id="xaxis1" name="xaxis1" disabled></select></td>
+						</tr>
+						<tr>
+							<td>
+								<label for="yaxis1">Y-Axis Parameter:</label>
+							</td>
+							<td>
+								<select id="yaxis1" name="yaxis1" disabled></select></td>
+							</tr>
+						</table>
+					</div>
+					<!-- Box 2 -->
+					<div class="input-box" id="box2">
+						<table>
+							<tr>
+								<td>
+									<input type="checkbox" id="enableBox2" onchange="toggleFields('box2',2, this)"/>
+									<!-- <td> -->
+										<!-- <label for="enableBox2">Enable Box 2</label> -->
+									<!-- </td> -->
+								</tr>
+								<tr>
+									<td>
+										<select id="database2" name="database2" onchange="fetchTables(2)" disabled>
+										 <option value="0" selected="selected">Select database</option> 
+										</select></td>
+									</tr>
+									<tr>
+										<td>
+											<select id="table2" name="table2" onchange="fetchColumnsAndStationIds(2)" disabled></select>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<select id="stationId2" name="stationId2" onchange="fetchStationIds(2)" disabled>
+											<!-- Station ID options will be populated dynamically -->
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<select id="stationsel2" name="stationsel2" disabled>
+										<!-- Station ID options will be populated dynamically -->
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<select id="xaxis2" name="xaxis2" disabled></select>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<select id="yaxis2" name="yaxis2" disabled>< select>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<!-- Box 3 -->
+					<div class="input-box" id="box3">
+						<table>
+							<tr>
+								<td>
+									<input type="checkbox" id="enableBox3" onchange="toggleFields('box3',3, this)">
+									<!-- <td> -->
+										<!-- <label for="enableBox3">Enable Box 3</label> -->
+									<!-- </td> -->
+								</tr>
+								<tr>
+									<td>
+										<select id="database3" name="database3" onchange="fetchTables(3)" disabled>
+										 <option value="0" selected="selected">Select database</option> 
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<select id="table3" name="table3" onchange="fetchColumnsAndStationIds(3)" disabled></select>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<select id="stationId3" name="stationId3" onchange="fetchStationIds(3)" disabled>
+										<!-- Station ID options will be populated dynamically -->
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<select id="stationsel3" name="stationsel3" disabled>
+									<!-- Station ID options will be populated dynamically -->
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<select id="xaxis3" name="xaxis3" disabled></select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<select id="yaxis3" name="yaxis3" disabled></select>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<!-- Box 4 -->
+				<div class="input-box" id="box4">
+					<table>
+						<tr>
+							<td>
+								<input type="checkbox" id="enableBox4" onchange="toggleFields('box4',4, this)"/>
+								<!-- <td> -->
+									<!-- <label for="enableBox4">Enable Box 4</label> -->
+								<!-- </td> -->
+							</tr>
+							<tr>
+								<td>
+									<select id="database4" name="database4" onchange="fetchTables(4)" disabled>
+									 <option value="0" selected="selected">Select database</option> 
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<select id="table4" name="table4" onchange="fetchColumnsAndStationIds(4)" disabled></select>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<select id="stationId4" name="stationId4" onchange="fetchStationIds(4)" disabled>
+									<!-- Station ID options will be populated dynamically -->
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<select id="stationsel4" name="stationsel4" disabled>
+								<!-- Station ID options will be populated dynamically -->
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<select id="xaxis4" name="xaxis4" disabled></select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<select id="yaxis4" name="yaxis4" disabled></select>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<!-- <h3>Select Date Range</h3> -->
+		<div class="box-container2">
+			<div class="form-group">
+				<table id="dates">
+					<tr>
+						<th>Select Date Range</th>
+					</tr>
+					<tr>
+						<td>
+							<label for="startDate">From:</label>
+						</td>
+						<td>
+							<input type="date" id="startDate" name="startDate"/>
+							<td>
+								<label for="endDate">To</label>
+							</td>
+							<td>
+								<input type="date" id="endDate" name="endDate"/>
+							</tr>
+						</table>
+						<table id="axis">
+							<tr>
+								<th>Y-Axis Range</th>
+							</tr>
+							<tr>
+								<td>
+									<label for="min">Min:</label>
+								</td>
+								<td>
+									<input type="number" id="min" name="min"/>
+									<td>
+										<label for="max">Max:</label>
+									</td>
+									<td>
+										<input type="number" id="max" name="max"/>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="box-container2">
+							<button type="button" onclick="generateChart()">Generate Chart</button>
+						</div>
+					</form>
+					<div id="chartContainer" style="width:100%; height:400px;"></div>
+					<script src="fetch_data.js"></script>
+					<script src="generate_chart.js"></script>
+				</body>
+			</html>

@@ -1,0 +1,5 @@
+left: 1302px;
+    bottom: 215px;
+---kms
+margin-bottom: 91px;
+    margin-right: 391px;

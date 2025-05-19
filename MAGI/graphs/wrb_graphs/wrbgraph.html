@@ -1,0 +1,756 @@
+<html>
+   <head> 
+      <!-- <title>Highcharts Stock Demo</title>  -->
+      <meta name="viewport" content="width=device-width, initial-scale=1"> 
+	  <link rel="stylesheet" type="text/css" href="../bootstrap-4.0.0/dist/css/bootstrap.min.css" />
+	  <style>
+	  #container1,#container2,#container3,#container4,#container5,#container6,#container7,#container8
+	  {
+	  height:1000px;
+	  }
+	 
+	   .highcharts-yaxis-label {
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
+            background-color: #f0f0f0; /* Background color for Y-axis labels */
+            padding: 5px;
+            border-radius: 3px;
+        }
+        .highcharts-xaxis-label {
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
+            background-color: #f0f0f0; /* Background color for X-axis labels */
+            padding: 5px;
+            border-radius: 3px;
+        }
+	  
+	  .highcharts-range-selector-buttons{
+	  display:none;
+	  }
+	  
+	
+	    </style>
+		 
+   </head> 
+   <body > 
+	<b>Station:</b> <span id="heading"></span>
+ <button id="resetZoomButton">Reset Zoom</button>	
+		 <div class="container-fluid">
+			<div class="row">
+				<div id="container1" class="col-md-4"></div>
+				<div id="container2" class="col-md-4"></div>
+				
+			</div>
+			 <div id="container_avail2" style="height: 220px;width: 100%;overflow-x: scroll;overflow-y: hidden;"></br>
+	  <span id="title" style="display:block;margin:auto;width: 50%;font-size: 22px;"></span>
+	
+	
+	  <div id="container_avail" style="width: 500%">
+	
+	  </div> 
+	    </div> 
+		</div> 
+		
+		  
+      <script src="https://code.highcharts.com/stock/highstock.js"></script> 
+      <script src="https://code.highcharts.com/stock/modules/exporting.js"></script> 
+      <script type="text/javascript" src="https://www.highcharts.com/samples/data/usdeur.js"></script> 
+
+      <script type="text/javascript">
+	  
+	 const queryString = window.location.search;
+	 const urlParams = new URLSearchParams(queryString);
+	 const pid = urlParams.get('pid');
+	 pid1 = pid.replace(/_/g, ' ');
+
+	 document.getElementById("heading").innerHTML = pid1;
+
+	 (async() => {
+
+	     const data1 = await fetch(
+	             'wrb_graph1.php?pid=' + pid).then(response => response.json());
+
+	     data1.forEach(function (element, index) {
+
+	         element.x = new Date(element['label']);
+	         element.y = +element['value'];
+
+	         delete element['label'];
+	         delete element['value'];
+	     });
+
+	     const data2 = await fetch(
+	             'wrb_graph2.php?pid=' + pid).then(response => response.json());
+
+	     data2.forEach(function (element, index) {
+	         element.x = new Date(element['label'])
+	             element.y = +element['value'];
+
+	         delete element['label'];
+	         delete element['value'];
+	     });
+
+	     const data3 = await fetch(
+	             'wrb_graph3.php?pid=' + pid).then(response => response.json());
+
+	     data3.forEach(function (element, index) {
+	         element.x = new Date(element['label'])
+	             element.y = +element['value'];
+
+	         delete element['label'];
+	         delete element['value'];
+	     });
+
+	     const data4 = await fetch(
+	             'wrb_graph4.php?pid=' + pid).then(response => response.json());
+
+	     data4.forEach(function (element, index) {
+	         element.x = new Date(element['label'])
+	             element.y = +element['value'];
+
+	         delete element['label'];
+	         delete element['value'];
+	     });
+
+	     const data5 = await fetch(
+	             'wrb_graph5.php?pid=' + pid).then(response => response.json());
+
+	     data5.forEach(function (element, index) {
+	         element.x = new Date(element['label'])
+	             element.y = +element['value'];
+
+	         delete element['label'];
+	         delete element['value'];
+	     });
+
+	     const data6 = await fetch(
+	             'wrb_graph6.php?pid=' + pid).then(response => response.json());
+
+	     data6.forEach(function (element, index) {
+	         element.x = new Date(element['label'])
+	             element.y = +element['value'];
+
+	         delete element['label'];
+	         delete element['value'];
+	     });
+
+	     const data7 = await fetch(
+	             'wrb_graph7.php?pid=' + pid).then(response => response.json());
+
+	     data7.forEach(function (element, index) {
+	         element.x = new Date(element['label'])
+	             element.y = +element['value'];
+
+	         delete element['label'];
+	         delete element['value'];
+	     });
+
+	     const data8 = await fetch(
+	             'wrb_graph8.php?pid=' + pid).then(response => response.json());
+
+	     data8.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value1'];
+
+	         delete element['label'];
+	         delete element['value1'];
+	         delete element['value2'];
+	         delete element['value3'];
+	         delete element['value4'];
+	         delete element['value5'];
+	         delete element['value6'];
+	         delete element['value7'];
+	         delete element['value8'];
+	         delete element['value9'];
+	         delete element['value10'];
+
+	     });
+
+	     const data9 = await fetch(
+	             'wrb_graph9.php?pid=' + pid).then(response => response.json());
+
+	     data9.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value2'];
+
+	         delete element['label'];
+	         delete element['value2'];
+
+	         delete element['value1'];
+
+	         delete element['value3'];
+	         delete element['value4'];
+	         delete element['value5'];
+	         delete element['value6'];
+	         delete element['value7'];
+	         delete element['value8'];
+	         delete element['value9'];
+	         delete element['value10']
+	     });
+
+	     const data10 = await fetch(
+	             'wrb_graph10.php?pid=' + pid).then(response => response.json());
+
+	     data10.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value3'];
+
+	         delete element['label'];
+	         delete element['value3'];
+
+	         delete element['value1'];
+	         delete element['value2'];
+
+	         delete element['value4'];
+	         delete element['value5'];
+	         delete element['value6'];
+	         delete element['value7'];
+	         delete element['value8'];
+	         delete element['value9'];
+	         delete element['value10']
+	     });
+
+	     const data11 = await fetch(
+	             'wrb_graph11.php?pid=' + pid).then(response => response.json());
+
+	     data11.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value4'];
+
+	         delete element['label'];
+	         delete element['value4'];
+
+	         delete element['value1'];
+	         delete element['value2'];
+	         delete element['value3'];
+
+	         delete element['value5'];
+	         delete element['value6'];
+	         delete element['value7'];
+	         delete element['value8'];
+	         delete element['value9'];
+	         delete element['value10']
+	     });
+	     const data12 = await fetch(
+	             'wrb_graph12.php?pid=' + pid).then(response => response.json());
+
+	     data12.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value5'];
+
+	         delete element['label'];
+	         delete element['value5'];
+
+	         delete element['value1'];
+	         delete element['value2'];
+	         delete element['value3'];
+	         delete element['value4'];
+
+	         delete element['value6'];
+	         delete element['value7'];
+	         delete element['value8'];
+	         delete element['value9'];
+	         delete element['value10']
+	     });
+
+	     const data13 = await fetch(
+	             'wrb_graph13.php?pid=' + pid).then(response => response.json());
+
+	     data13.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value6'];
+
+	         delete element['label'];
+	         delete element['value6'];
+
+	         delete element['value1'];
+	         delete element['value2'];
+	         delete element['value3'];
+	         delete element['value4'];
+	         delete element['value5'];
+
+	         delete element['value7'];
+	         delete element['value8'];
+	         delete element['value9'];
+	         delete element['value10']
+	     });
+	     const data14 = await fetch(
+	             'wrb_graph14.php?pid=' + pid).then(response => response.json());
+
+	     data14.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value7'];
+
+	         delete element['label'];
+	         delete element['value7'];
+
+	         delete element['value1'];
+	         delete element['value2'];
+	         delete element['value3'];
+	         delete element['value4'];
+	         delete element['value5'];
+	         delete element['value6'];
+
+	         delete element['value8'];
+	         delete element['value9'];
+	         delete element['value10']
+	     });
+	     const data15 = await fetch(
+	             'wrb_graph15.php?pid=' + pid).then(response => response.json());
+
+	     data15.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value8'];
+
+	         delete element['label'];
+	         delete element['value8'];
+
+	         delete element['value1'];
+	         delete element['value2'];
+	         delete element['value3'];
+	         delete element['value4'];
+	         delete element['value5'];
+	         delete element['value6'];
+	         delete element['value7'];
+
+	         delete element['value9'];
+	         delete element['value10']
+	     });
+	     const data16 = await fetch(
+	             'wrb_graph16.php?pid=' + pid).then(response => response.json());
+
+	     data16.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value9'];
+
+	         delete element['label'];
+	         delete element['value9'];
+
+	         delete element['value1'];
+	         delete element['value2'];
+	         delete element['value3'];
+	         delete element['value4'];
+	         delete element['value5'];
+	         delete element['value6'];
+	         delete element['value7'];
+	         delete element['value8'];
+
+	         delete element['value10']
+	     });
+	     const data17 = await fetch(
+	             'wrb_graph17.php?pid=' + pid).then(response => response.json());
+
+	     data17.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value10'];
+
+	         delete element['label'];
+	         delete element['value10'];
+
+	         delete element['value1'];
+	         delete element['value2'];
+	         delete element['value3'];
+	         delete element['value4'];
+	         delete element['value5'];
+	         delete element['value6'];
+	         delete element['value7'];
+	         delete element['value8'];
+	         delete element['value9'];
+
+	     });
+		 
+		  const data18 = await fetch(
+	             'wrb_graph17.php?pid=' + pid).then(response => response.json());
+
+	     data18.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value10'];
+
+	         delete element['label'];
+	         delete element['value10'];
+
+	         delete element['value1'];
+	         delete element['value2'];
+	         delete element['value3'];
+	         delete element['value4'];
+	         delete element['value5'];
+	         delete element['value6'];
+	         delete element['value7'];
+	         delete element['value8'];
+	         delete element['value9'];
+
+	     });
+		 
+		  const data19 = await fetch(
+	             'wrb_graph17.php?pid=' + pid).then(response => response.json());
+
+	     data19.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value10'];
+
+	         delete element['label'];
+	         delete element['value10'];
+
+	         delete element['value1'];
+	         delete element['value2'];
+	         delete element['value3'];
+	         delete element['value4'];
+	         delete element['value5'];
+	         delete element['value6'];
+	         delete element['value7'];
+	         delete element['value8'];
+	         delete element['value9'];
+
+	     });
+		 
+		  const data20 = await fetch(
+	             'wrb_graph17.php?pid=' + pid).then(response => response.json());
+
+	     data20.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value10'];
+
+	         delete element['label'];
+	         delete element['value10'];
+
+	         delete element['value1'];
+	         delete element['value2'];
+	         delete element['value3'];
+	         delete element['value4'];
+	         delete element['value5'];
+	         delete element['value6'];
+	         delete element['value7'];
+	         delete element['value8'];
+	         delete element['value9'];
+
+	     });
+document.getElementById("title").innerHTML='<b>'+pid+' Availability</b>';
+const today = new Date(); // Current date (To Date)
+    const fromDate = new Date(); 
+    fromDate.setDate(today.getDate() - 15); // From Date is 15 days ago
+	 Highcharts.setOptions({
+        lang: {
+        // Pre-v9 legacy settings
+            rangeSelectorFrom: 'From',
+            rangeSelectorTo: 'To'
+        }
+    });
+	      var chart1=Highcharts.chart('container1', {
+	         rangeSelector: {
+            
+						enabled:true
+        },
+    chart: {
+				 type: 'line',
+                zoomType: 'x',
+				panning: true,
+                panKey: 'shift'
+               
+    },
+	         title: {
+      text: '',
+      align: 'left'
+    },
+    subtitle: {
+      text: document.ontouchstart === undefined ?
+        'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in',
+      align: 'left'
+    },
+	         rangeSelector: {
+	             enabled: true,
+	             allButtonsEnabled: false,
+	             inputEnabled: true,
+
+	         },
+	         plotOptions:{
+                series:{
+                    turboThreshold:0,//larger threshold or set to 0 to disable
+					
+        pointIntervalUnit: 'month'
+                }
+            },
+			xAxis: {
+      type: 'datetime',
+	   min: fromDate.getTime(), // Set minimum x-axis range
+            max: today.getTime(), // Set maximum x-axis range
+	  startOnTick: true	  
+    },
+   
+	 tooltip: {
+                shared: true,
+                crosshairs: true
+            },
+			resetZoomButton: {
+                position: {
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -10,
+                    y: 10
+                },
+                relativeTo: 'chart'
+            },
+	         <!-- xAxis: { -->
+	             <!-- type: 'datetime', -->
+				 <!-- min: Date.UTC(2024, 10, 1),  -->
+        <!-- max: Date.UTC(2024,10, 31),  -->
+		<!-- startOnTick: false,           -->
+        <!-- endOnTick: false     -->
+
+	         <!-- }, -->
+	         yAxis: [{
+	                 title: {
+	                     text: 'Wave Height'
+	                 },
+	                 height: '25%',
+	                 lineWidth: 2
+	             }, {
+	                 title: {
+	                     text: 'Current Direction'
+	                 },
+	                 top: '25%',
+	                 height: '25%',
+	                 offset: 0,
+	                 lineWidth: 2
+	             }, {
+	                 title: {
+	                     text: 'Current Speed'
+	                 },
+	                 top: '50%',
+	                 height: '25%',
+	                 offset: 0,
+	                 lineWidth: 2
+	             }, {
+	                 title: {
+	                     text: 'SST'
+	                 },
+	                 top: '75%',
+	                 height: '25%',
+	                 offset: 0,
+	                 lineWidth: 2
+	             }
+
+	         ],
+	         series: [{
+	                 //type: 'line',
+	                 name: 'Wave Height',
+	                 data: data1,
+					  marker: {
+                enabled: true,
+                radius: 2
+            }
+	             }, {
+	                 type: 'line',
+	                 name: 'Current Direction',
+	                 data: data2,
+	                 yAxis: 1,
+	             }, {
+	                 type: 'line',
+	                 name: 'Current Speed',
+	                 data: data3,
+	                 yAxis: 2,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'SST',
+	                 data: data4,
+	                 yAxis: 3,
+
+	             }
+				 
+
+	         ]
+	     });
+document.getElementById('resetZoomButton').addEventListener('click', function () {
+    chart1.zoomOut(); // Reset zoom
+});
+	     Highcharts.chart('container2', {
+	         chart: {
+
+	             zoomType: 'x'
+	         },
+	         title: {
+	             text: '',
+	             align: 'center',
+
+	         },
+	         rangeSelector: {
+	             enabled: true,
+	             allButtonsEnabled: false,
+	             inputEnabled: true,
+
+	         },
+	          plotOptions:{
+                series:{
+                    turboThreshold:0,//larger threshold or set to 0 to disable
+					
+        pointIntervalUnit: 'month'
+                }
+            },
+			xAxis: {
+      type: 'datetime',
+	   min: fromDate.getTime(), // Set minimum x-axis range
+            max: today.getTime(), // Set maximum x-axis range
+	  startOnTick: true	  
+    },
+   
+	 tooltip: {
+                shared: true,
+                crosshairs: true
+            },
+			resetZoomButton: {
+                position: {
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -10,
+                    y: 10
+                },
+                relativeTo: 'chart'
+            },
+	         yAxis: [{
+	                 title: {
+	                     text: 'dirp'
+	                 },
+	                 height: '25%',
+	                 lineWidth: 2
+	             }, {
+	                 title: {
+	                     text: 'eps'
+	                 },
+	                 top: '25%',
+	                 height: '25%',
+	                 offset: 0,
+	                 lineWidth: 2
+	             }, {
+	                 title: {
+	                     text: 'ss'
+	                 },
+	                 top: '50%',
+	                 height: '25%',
+	                 offset: 0,
+	                 lineWidth: 2
+	             }, {
+	                 title: {
+	                     text: ''
+	                 },
+	                 top: '75%',
+	                 height: '25%',
+	                 offset: 0,
+	                 lineWidth: 2
+	             }
+
+	         ],
+	         series: [{
+	                 type: 'line',
+	                 name: 'dirp',
+	                 data: data6,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'eps',
+	                 data: data7,
+	                 yAxis: 1,
+
+	             }, 
+				 {
+	                 type: 'line',
+	                 name: 'ss',
+	                 data: data10,
+	                 yAxis: 2,
+
+	             }, 
+				 {
+	                 type: 'line',
+	                 name: 'av',
+	                 data: data18,
+	                 yAxis: 2,
+
+	             }, 
+				 {
+	                 type: 'line',
+	                 name: 'ax',
+	                 data: data19,
+	                 yAxis: 2,
+
+	             }, 
+				 {
+	                 type: 'line',
+	                 name: 'ay',
+	                 data: data20,
+	                 yAxis: 2,
+
+	             }, 
+				 {
+	                 type: 'line',
+	                 name: 't1',
+	                 data: data5,
+	                 yAxis: 3,
+
+	             }, {
+	                 type: 'line',
+	                 name: 't3',
+	                 data: data11,
+	                 yAxis: 3,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'tc',
+	                 data: data12,
+	                 yAxis: 3,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'tdw',
+	                 data: data13,
+	                 yAxis: 3,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'te',
+	                 data: data14,
+	                 yAxis: 3,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'ti',
+	                 data: data15,
+	                 yAxis: 3,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'tp',
+	                 data: data16,
+	                 yAxis: 3,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'tz',
+	                 data: data17,
+	                 yAxis: 3,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'sprtp',
+	                 data: data9,
+	                 yAxis: 3,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'qp',
+	                 data: data8,
+	                 yAxis: 3,
+
+	             }
+
+	         ]
+	     });
+
+	 })();
+
+
+      </script>
+	</body>
+</html>

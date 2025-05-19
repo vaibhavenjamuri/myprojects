@@ -1,0 +1,382 @@
+<html>
+   <head> 
+      <!-- <title>Highcharts Stock Demo</title>  -->
+      <meta name="viewport" content="width=device-width, initial-scale=1"> 
+   </head> 
+   <body> 
+   <div id="head-container" >
+   <b>Station:</b> <span id="heading"></span>
+    <button id="resetZoomButton">Reset Zoom</button>
+	
+     <div id="container" style="height: 680px"></div> 
+	  <div id="container_avail2" style="height: 220px;width: 100%;overflow-x: scroll;overflow-y: hidden;"></br>
+	  <span id="title" style="display:block;margin:auto;width: 50%;font-size: 22px;"></span>
+	
+	
+	  <div id="container_avail" style="width: 500%">
+	
+	  </div> 
+	    </div> 
+	 </div> 
+	      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	  <script src="https://code.highcharts.com/gantt/highcharts-gantt.js"></script>
+      <!-- <script src="https://code.highcharts.com/stock/highstock.js"></script>  -->
+	   <script src="https://code.highcharts.com/stock/highstock.js"></script> 
+      <script src="https://code.highcharts.com/stock/modules/exporting.js"></script> 
+		    <!--<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+      <script src="https://code.highcharts.com/stock/modules/exporting.js"></script> --> 
+      <script type="text/javascript" src="https://www.highcharts.com/samples/data/usdeur.js"></script> 
+	  <style>
+	   .highcharts-yaxis-label {
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
+            background-color: #f0f0f0; /* Background color for Y-axis labels */
+            padding: 5px;
+            border-radius: 3px;
+        }
+        .highcharts-xaxis-label {
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
+            background-color: #f0f0f0; /* Background color for X-axis labels */
+            padding: 5px;
+            border-radius: 3px;
+        }
+	  
+	  .highcharts-range-selector-buttons{
+	  display:none;
+	  }
+	  
+	  </style>
+	   <!-- <script type="text/javascript" src="graghs/app5.js"></script>  -->
+      <script type="text/javascript">
+	 const queryString = window.location.search;
+	 const urlParams = new URLSearchParams(queryString);
+	 const pid = urlParams.get('pid');
+	 console.log(pid);
+	 <!-- pid1= pid.replace(/_/g, ' '); -->
+	
+	 document.getElementById("heading").innerHTML = pid ;
+	  <!-- var par_name=document.getElementById("pname").value; -->
+	<!-- // function val() { -->
+	 <!-- var par_name=document.getElementById("pname").value; -->
+	  (async () => {
+
+  const data1 = await fetch(
+    'tggraph2.php?pid='+pid
+  ).then(response => response.json());
+
+data1.forEach(function(element, index) {
+  element.x = new Date(element['label']);
+  element.y = +element['value'];
+
+  delete element['label'];
+  delete element['value'];
+});
+  const data2 = await fetch(
+    'tggraph3.php?pid='+pid
+  ).then(response => response.json());
+
+data2.forEach(function(element, index) {
+  element.x = new Date(element['label']);
+  element.y = +element['value'];
+
+  delete element['label'];
+  delete element['value'];
+});
+  const data3 = await fetch(
+    'tggraph4.php?pid='+pid
+  ).then(response => response.json());
+
+data3.forEach(function(element, index) {
+  element.x = new Date(element['label']);
+  element.y = +element['value'];
+
+  delete element['label'];
+  delete element['value'];
+});
+document.getElementById("title").innerHTML='<b>'+pid+' Availability</b>';
+const today = new Date(); // Current date (To Date)
+    const fromDate = new Date(); 
+    fromDate.setDate(today.getDate() - 15); // From Date is 15 days ago
+ Highcharts.setOptions({
+        lang: {
+        // Pre-v9 legacy settings
+            rangeSelectorFrom: 'From',
+            rangeSelectorTo: 'To'
+        }
+    });
+  var chart1=Highcharts.chart('container', {
+   rangeSelector: {
+            
+						enabled:true
+        },
+    chart: {
+				 type: 'line',
+                zoomType: 'x',
+				panning: true,
+                panKey: 'shift'
+               
+    },
+	
+	
+    
+
+    title: {
+      text: '',
+      align: 'left'
+    },
+    subtitle: {
+      text: document.ontouchstart === undefined ?
+        'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in',
+      align: 'left'
+    },
+    
+   
+	 yAxis: [{
+    title: {
+      text: 'Rad'
+    },
+    height: '33%',
+    lineWidth: 2
+  }, {
+    title: {
+      text: 'PRS'
+    },
+    top: '33%%',
+    height: '33%',
+    offset: 0,
+    lineWidth: 2
+  }
+  , {
+    title: {
+      text: 'ENC'
+    },
+	top: '66%',
+    height: '33%',
+	offset: 0,
+   lineWidth: 2
+  }],
+    legend: {
+      enabled: false
+    },
+	 plotOptions:{
+                series:{
+                    turboThreshold:0,//larger threshold or set to 0 to disable
+					
+        pointIntervalUnit: 'month'
+                }
+            },
+			xAxis: {
+      type: 'datetime',
+	   min: fromDate.getTime(), // Set minimum x-axis range
+            max: today.getTime(), // Set maximum x-axis range
+	  startOnTick: true	  
+    },
+   
+	 tooltip: {
+                shared: true,
+                crosshairs: true
+            },
+			resetZoomButton: {
+                position: {
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -10,
+                    y: 10
+                },
+                relativeTo: 'chart'
+            },
+	 series: [{
+	 
+    //type: 'line',
+    name: 'Wave Height',
+	pointInterval: 24 * 3600 * 1000,
+    
+    data: data1,
+	 //lineWidth: 0,
+	  marker: {
+                enabled: true,
+                radius: 2
+            }
+  }, {
+    //type: 'line',
+    name: 'Wave Height',
+    data: data2,
+	//lineWidth: 0,
+	  marker: {
+                enabled: true,
+                radius: 2
+            },
+     yAxis: 1,
+  }
+  <!-- , { -->
+    <!-- type: 'spline', -->
+    <!-- name: 'TemperatureOut', -->
+    <!-- data: data, -->
+    <!-- yAxis: 1, -->
+  <!-- } -->
+  , {
+    //type: 'line',
+    name: 'Wave Height',
+    data: data3,
+	//lineWidth: 0,
+	  marker: {
+                enabled: true,
+                radius: 2
+            },
+	  yAxis: 2,
+   
+  }
+  
+  ]
+	
+	
+  });
+  
+  document.getElementById('resetZoomButton').addEventListener('click', function () {
+    chart1.zoomOut(); // Reset zoom
+});
+  
+  
+      var chart2 = Highcharts.ganttChart('container_avail', {
+        chart: {
+            type: 'gantt',
+            //zoomType: 'x', // Enable zooming on both axes
+            //animation: true,
+            <!-- events: { -->
+                <!-- selection: function (event) { -->
+                    <!-- // Show reset zoom button when zooming -->
+                    <!-- if (event.resetSelection) { -->
+                        <!-- return true; // Handle default behavior -->
+                    <!-- } -->
+
+                    <!-- // Custom zoom handling -->
+                    <!-- var resetZoomButton = this.renderer.button('Reset Zoom', null, null, function () { -->
+                        <!-- chart.zoomOut(); // Reset zoom on button click -->
+                    <!-- }).add(); -->
+                    <!-- resetZoomButton.align({ -->
+                        <!-- align: 'right', -->
+                        <!-- verticalAlign: 'top', -->
+                        <!-- x: -10, -->
+                        <!-- y: 10 -->
+                    <!-- }); -->
+                <!-- } -->
+            <!-- } -->
+        },
+        title: {
+            //text: pid+' Availability'
+        },
+        xAxis: {
+            type: 'datetime',
+            grid: {
+                enabled: true,
+				 style: {
+                            fontFamily: 'Arial, sans-serif',
+                            fontSize: '14px',
+                            color: '#333',
+							fontWeight :'600'
+                        },
+            },
+			labels: {
+                        style: {
+                            fontFamily: 'Arial, sans-serif',
+                            fontSize: '14px',
+                            color: '#333',
+							fontWeight :'600'
+                        }
+                    },
+					
+					 opposite: true,
+                    tickWidth: 0, // Hide ticks
+                    lineWidth:0, // Hide axis line
+                    title: {
+                        text: null // Remove title if present
+                    }
+        },
+        yAxis: {
+            type: 'category',
+            categories: [], // This will be updated with buoy IDs
+            min: 0,
+            grid: {
+                enabled: true
+            },
+            title: {
+                text: 'Stations',
+				style: {
+                            fontFamily: 'Arial, sans-serif',
+                            fontSize: '14px',
+                            color: '#333',
+							fontWeight :'600'
+                        },
+            },
+			labels: {
+                        style: {
+                            fontFamily: 'Arial, sans-serif',
+                            fontSize: '14px',
+                            color: '#333',
+							fontWeight :'600'
+                        }
+                    },
+            minRange: 1, // Ensure Y-axis has a minimum range (prevents collapsing when zooming)
+            maxPadding: 0.1 // Adds a bit of padding to the Y-axis when zoomed in
+        },
+        series: [{
+            name: 'Availability Ranges',
+            data: [] // This will be updated with buoy availability ranges
+        }],
+        tooltip: {
+            pointFormat: 'Start: {point.start:%Y-%m-%d} <br>End: {point.end:%Y-%m-%d}'
+        }
+    });
+
+    // Fetch buoy data from PHP API
+    $.getJSON('Availability_Charts/availability_chart_tg.php?pid='+pid, function (data) {
+        const categories = Object.keys(data).map(buoy_id => buoy_id); // Y-axis categories
+
+        // Prepare the series data
+        const seriesData = Object.keys(data).map(buoy_id => {
+            return data[buoy_id].map(range => {
+                const startDate = Date.parse(range.start);
+                const endDate = Date.parse(range.end);
+                return {
+                    start: startDate,
+                    end: endDate,
+                    y: categories.indexOf(buoy_id),
+                    name: buoy_id
+                };
+            });
+        });
+
+        // Flatten the series data
+        const flattenedSeriesData = seriesData.flat();
+
+        // Update chart categories and series data
+        chart2.update({
+            yAxis: {
+                categories: categories
+            },
+            series: [{
+                name: 'Availability Ranges',
+                data: flattenedSeriesData
+            }]
+        }, true); // Force chart redraw
+
+    });
+  
+  
+  
+  
+  
+})();
+
+
+
+      </script>  
+	  
+	  
+   </body>
+</html>

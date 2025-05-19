@@ -1,0 +1,568 @@
+<html>
+   <head> 
+      <!-- <title>Highcharts Stock Demo</title>  -->
+      <meta name="viewport" content="width=device-width, initial-scale=1"> 
+	  <link rel="stylesheet" type="text/css" href="../bootstrap-4.0.0/dist/css/bootstrap.min.css" />
+	  <style>
+	  #container1,#container2,#container3,#container4,#container5,#container6,#container7,#container8
+	  {
+	  height:1000px;
+	  }
+	    </style>
+		 
+   </head> 
+   <body > 
+	<b>Station:</b> <span id="heading"></span>	 
+		 <div class="container-fluid">
+			<div class="row">
+				<div id="container1" class="col-md-4"></div>
+				<div id="container2" class="col-md-4"></div>
+				
+			</div>
+			
+		</div> 
+		
+		  
+      <script src="https://code.highcharts.com/stock/highstock.js"></script> 
+      <script src="https://code.highcharts.com/stock/modules/exporting.js"></script> 
+      <script type="text/javascript" src="https://www.highcharts.com/samples/data/usdeur.js"></script> 
+
+      <script type="text/javascript">
+	  
+	 const queryString = window.location.search;
+	 const urlParams = new URLSearchParams(queryString);
+	 const pid = urlParams.get('pid');
+	 pid1 = pid.replace(/_/g, ' ');
+
+	 document.getElementById("heading").innerHTML = pid1;
+
+	 (async() => {
+
+	     const data = await fetch(
+	             'mbgraph.php?pid=' + pid).then(response => response.json());
+
+	     data.forEach(function (element, index) {
+
+	         element.x = new Date(element['label']);
+	         element.y = +element['value'];
+
+	         delete element['label'];
+	         delete element['value'];
+	     });
+
+	     const data2 = await fetch(
+	             'mbgraph2.php?pid=' + pid).then(response => response.json());
+
+	     data2.forEach(function (element, index) {
+	         element.x = new Date(element['label'])
+	             element.y = +element['value'];
+
+	         delete element['label'];
+	         delete element['value'];
+	     });
+
+	     const data3 = await fetch(
+	             'mbgraph3.php?pid=' + pid).then(response => response.json());
+
+	     data3.forEach(function (element, index) {
+	         element.x = new Date(element['label'])
+	             element.y = +element['value'];
+
+	         delete element['label'];
+	         delete element['value'];
+	     });
+
+	     const data4 = await fetch(
+	             'mbgraph4.php?pid=' + pid).then(response => response.json());
+
+	     data4.forEach(function (element, index) {
+	         element.x = new Date(element['label'])
+	             element.y = +element['value'];
+
+	         delete element['label'];
+	         delete element['value'];
+	     });
+
+	     const data5 = await fetch(
+	             'mbgraph5.php?pid=' + pid).then(response => response.json());
+
+	     data5.forEach(function (element, index) {
+	         element.x = new Date(element['label'])
+	             element.y = +element['value'];
+
+	         delete element['label'];
+	         delete element['value'];
+	     });
+
+	     const data6 = await fetch(
+	             'mbgraph6.php?pid=' + pid).then(response => response.json());
+
+	     data6.forEach(function (element, index) {
+	         element.x = new Date(element['label'])
+	             element.y = +element['value'];
+
+	         delete element['label'];
+	         delete element['value'];
+	     });
+
+	     const data7 = await fetch(
+	             'mbgraph7.php?pid=' + pid).then(response => response.json());
+
+	     data7.forEach(function (element, index) {
+	         element.x = new Date(element['label'])
+	             element.y = +element['value'];
+
+	         delete element['label'];
+	         delete element['value'];
+	     });
+
+	     const data91 = await fetch(
+	             'mbgraph9.php?pid=' + pid).then(response => response.json());
+
+	     data91.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value1'];
+
+	         delete element['label'];
+	         delete element['value1'];
+	         delete element['value2'];
+	         delete element['value3'];
+	         delete element['value4'];
+	         delete element['value5'];
+	         delete element['value6'];
+	         delete element['value7'];
+	         delete element['value8'];
+	         delete element['value9'];
+	         delete element['value10'];
+
+	     });
+
+	     const data92 = await fetch(
+	             'mbgraph9.php?pid=' + pid).then(response => response.json());
+
+	     data92.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value2'];
+
+	         delete element['label'];
+	         delete element['value2'];
+
+	         delete element['value1'];
+
+	         delete element['value3'];
+	         delete element['value4'];
+	         delete element['value5'];
+	         delete element['value6'];
+	         delete element['value7'];
+	         delete element['value8'];
+	         delete element['value9'];
+	         delete element['value10']
+	     });
+
+	     const data93 = await fetch(
+	             'mbgraph9.php?pid=' + pid).then(response => response.json());
+
+	     data93.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value3'];
+
+	         delete element['label'];
+	         delete element['value3'];
+
+	         delete element['value1'];
+	         delete element['value2'];
+
+	         delete element['value4'];
+	         delete element['value5'];
+	         delete element['value6'];
+	         delete element['value7'];
+	         delete element['value8'];
+	         delete element['value9'];
+	         delete element['value10']
+	     });
+
+	     const data94 = await fetch(
+	             'mbgraph9.php?pid=' + pid).then(response => response.json());
+
+	     data94.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value4'];
+
+	         delete element['label'];
+	         delete element['value4'];
+
+	         delete element['value1'];
+	         delete element['value2'];
+	         delete element['value3'];
+
+	         delete element['value5'];
+	         delete element['value6'];
+	         delete element['value7'];
+	         delete element['value8'];
+	         delete element['value9'];
+	         delete element['value10']
+	     });
+	     const data95 = await fetch(
+	             'mbgraph9.php?pid=' + pid).then(response => response.json());
+
+	     data95.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value5'];
+
+	         delete element['label'];
+	         delete element['value5'];
+
+	         delete element['value1'];
+	         delete element['value2'];
+	         delete element['value3'];
+	         delete element['value4'];
+
+	         delete element['value6'];
+	         delete element['value7'];
+	         delete element['value8'];
+	         delete element['value9'];
+	         delete element['value10']
+	     });
+
+	     const data96 = await fetch(
+	             'mbgraph9.php?pid=' + pid).then(response => response.json());
+
+	     data96.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value6'];
+
+	         delete element['label'];
+	         delete element['value6'];
+
+	         delete element['value1'];
+	         delete element['value2'];
+	         delete element['value3'];
+	         delete element['value4'];
+	         delete element['value5'];
+
+	         delete element['value7'];
+	         delete element['value8'];
+	         delete element['value9'];
+	         delete element['value10']
+	     });
+	     const data97 = await fetch(
+	             'mbgraph9.php?pid=' + pid).then(response => response.json());
+
+	     data97.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value7'];
+
+	         delete element['label'];
+	         delete element['value7'];
+
+	         delete element['value1'];
+	         delete element['value2'];
+	         delete element['value3'];
+	         delete element['value4'];
+	         delete element['value5'];
+	         delete element['value6'];
+
+	         delete element['value8'];
+	         delete element['value9'];
+	         delete element['value10']
+	     });
+	     const data98 = await fetch(
+	             'mbgraph9.php?pid=' + pid).then(response => response.json());
+
+	     data98.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value8'];
+
+	         delete element['label'];
+	         delete element['value8'];
+
+	         delete element['value1'];
+	         delete element['value2'];
+	         delete element['value3'];
+	         delete element['value4'];
+	         delete element['value5'];
+	         delete element['value6'];
+	         delete element['value7'];
+
+	         delete element['value9'];
+	         delete element['value10']
+	     });
+	     const data99 = await fetch(
+	             'mbgraph9.php?pid=' + pid).then(response => response.json());
+
+	     data99.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value9'];
+
+	         delete element['label'];
+	         delete element['value9'];
+
+	         delete element['value1'];
+	         delete element['value2'];
+	         delete element['value3'];
+	         delete element['value4'];
+	         delete element['value5'];
+	         delete element['value6'];
+	         delete element['value7'];
+	         delete element['value8'];
+
+	         delete element['value10']
+	     });
+	     const data100 = await fetch(
+	             'mbgraph9.php?pid=' + pid).then(response => response.json());
+
+	     data100.forEach(function (element, index) {
+	         element.x = new Date(element['label']);
+	         element.y = +element['value10'];
+
+	         delete element['label'];
+	         delete element['value10'];
+
+	         delete element['value1'];
+	         delete element['value2'];
+	         delete element['value3'];
+	         delete element['value4'];
+	         delete element['value5'];
+	         delete element['value6'];
+	         delete element['value7'];
+	         delete element['value8'];
+	         delete element['value9'];
+
+	     });
+
+	     Highcharts.chart('container1', {
+	         chart: {
+	             zoomType: 'x'
+	         },
+	         title: {
+	             text: '',
+	             align: 'center',
+	             //  this to move y-coordinate of title to desired location
+	         },
+	         rangeSelector: {
+	             enabled: true,
+	             allButtonsEnabled: false,
+	             inputEnabled: true,
+
+	         },
+	         plotOptions: {
+	             series: {
+	                 turboThreshold: 10000 //larger threshold or set to 0 to disable
+	             }
+	         },
+	         xAxis: {
+	             type: 'datetime',
+				 min: Date.UTC(2024, 10, 1), 
+        max: Date.UTC(2024,10, 31), 
+		startOnTick: false,          
+        endOnTick: false    
+
+	         },
+	         yAxis: [{
+	                 title: {
+	                     text: 'Air Pressure'
+	                 },
+	                 height: '25%',
+	                 lineWidth: 2
+	             }, {
+	                 title: {
+	                     text: 'Air Temperature'
+	                 },
+	                 top: '25%',
+	                 height: '25%',
+	                 offset: 0,
+	                 lineWidth: 2
+	             }, {
+	                 title: {
+	                     text: 'Humidity'
+	                 },
+	                 top: '50%',
+	                 height: '25%',
+	                 offset: 0,
+	                 lineWidth: 2
+	             }, {
+	                 title: {
+	                     text: 'Rainfall'
+	                 },
+	                 top: '75%',
+	                 height: '25%',
+	                 offset: 0,
+	                 lineWidth: 2
+	             }
+
+	         ],
+	         series: [{
+	                 type: 'line',
+	                 name: 'Air Pressure',
+	                 data: data2,
+	             }, {
+	                 type: 'line',
+	                 name: 'Air Temperature',
+	                 data: data,
+	                 yAxis: 1,
+	             }, {
+	                 type: 'line',
+	                 name: 'Humidity',
+	                 data: data3,
+	                 yAxis: 2,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'Rainfall',
+	                 data: data4,
+	                 yAxis: 3,
+
+	             }
+
+	         ]
+	     });
+
+	     Highcharts.chart('container2', {
+	         chart: {
+
+	             zoomType: 'x'
+	         },
+	         title: {
+	             text: '',
+	             align: 'center',
+
+	         },
+	         rangeSelector: {
+	             enabled: true,
+	             allButtonsEnabled: false,
+	             inputEnabled: true,
+
+	         },
+	         plotOptions: {
+	             series: {
+	                 turboThreshold: 10000 //larger threshold or set to 0 to disable
+	             }
+	         },
+	         xAxis: {
+	             type: 'datetime',
+  min: Date.UTC(2024, 10, 1), 
+        max: Date.UTC(2024,10, 31), 
+		startOnTick: false,          
+        endOnTick: false 
+	         },
+	         yAxis: [{
+	                 title: {
+	                     text: 'Wind Direction'
+	                 },
+	                 height: '25%',
+	                 lineWidth: 2
+	             }, {
+	                 title: {
+	                     text: 'Wind Speed'
+	                 },
+	                 top: '25%',
+	                 height: '25%',
+	                 offset: 0,
+	                 lineWidth: 2
+	             }, {
+	                 title: {
+	                     text: 'Wind Gust'
+	                 },
+	                 top: '50%',
+	                 height: '25%',
+	                 offset: 0,
+	                 lineWidth: 2
+	             }, {
+	                 title: {
+	                     text: 'Water Temperature'
+	                 },
+	                 top: '75%',
+	                 height: '25%',
+	                 offset: 0,
+	                 lineWidth: 2
+	             }
+
+	         ],
+	         series: [{
+	                 type: 'line',
+	                 name: 'Wind Direction',
+	                 data: data5,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'Wind Speed',
+	                 data: data7,
+	                 yAxis: 1,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'Wind Gust',
+	                 data: data6,
+	                 yAxis: 2,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'water temperature 1m',
+	                 data: data91,
+	                 yAxis: 3,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'water temperature 10m',
+	                 data: data92,
+	                 yAxis: 3,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'water temperature 15m',
+	                 data: data93,
+	                 yAxis: 3,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'water temperature 20m',
+	                 data: data94,
+	                 yAxis: 3,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'water temperature 30m',
+	                 data: data95,
+	                 yAxis: 3,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'water temperature 50m',
+	                 data: data96,
+	                 yAxis: 3,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'water temperature 70m',
+	                 data: data97,
+	                 yAxis: 3,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'water temperature 100m',
+	                 data: data98,
+	                 yAxis: 3,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'water temperature 200m',
+	                 data: data99,
+	                 yAxis: 3,
+
+	             }, {
+	                 type: 'line',
+	                 name: 'water temperature 500m',
+	                 data: data100,
+	                 yAxis: 3,
+
+	             }
+
+	         ]
+	     });
+
+	 })();
+
+
+      </script>
+	</body>
+</html>

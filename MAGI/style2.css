@@ -1,0 +1,159 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+body, html {
+    overflow: hidden; /* Disable scrolling for the entire page */
+    height: 100%;
+}
+.container {
+  display: flex;
+   height: 100vh;
+}
+
+/* .frame { */
+  /* border: 2px solid #000; */
+  /* flex: 1; */
+  /* margin: 10px; */
+/* } */
+
+.frame1 {
+	 overflow: hidden; 
+flex: 1.5;
+  //display: flex;
+  //flex-direction: column;
+}
+
+.frame2 {
+  border: 2px solid #000;
+ flex: 1;
+  //height: 100%;     
+ overflow-y: auto;   
+  //font-size:10px;
+}
+.frame3 {
+  border: 2px solid #000;
+  font-size:10px;
+}
+
+
+.divider {
+  border-top: 2px solid #000;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
+}
+.sidebar {
+            width: 250px;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+		#info-table {
+			 
+}
+ thead tr {
+	 position: sticky;
+  top: 0;
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+ th,
+ td {
+    padding: 12px 15px;
+}
+ tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+ /* tbody tr:nth-of-type(even) { */
+    /* background-color: #f3f3f3; */
+/* } */
+
+tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+ thead th {
+ 
+}
+		.filterTable td {border: 1px solid white;padding-left: 0px;}
+		
+	
+[id*="info-container"]{
+	color: white;
+    font-weight: bolder;
+    font-size: 16px;
+//max-height: 200px;
+//padding: 44px  49px;
+
+}
+#legend td {
+	 /* width: 1%; */
+   /* white-space: nowrap; */
+//align-content: flex-start;
+  
+}
+#legend tr {
+	height:2%;
+  
+}
+/* Style for the toggle header */
+.toggle-header {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-icon-box {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  user-select: none;
+  transition: transform 0.3s ease;
+}
+
+/* Style for the toggle header */
+.toggle-table {
+	
+	margin: auto;
+  //width: 50%;
+		 border: 1px solid lightgrey;
+    border-collapse: seperate;
+    // margin: 66px 0;
+	// margin-left: auto; 
+	//overflow-y: scroll;
+  margin-right: auto;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+	max-height: 500px; /* Adjust to fit your table height */
+  opacity: 1;
+  visibility: visible;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease, visibility 0.2s;
+	
+  
+}
+
+/* Show the table with consistent width */
+.toggle-table.hide  {
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
